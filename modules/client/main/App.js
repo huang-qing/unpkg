@@ -113,11 +113,12 @@ export default function App() {
     window.localStorage.savedStats = stringStats;
   }, [stringStats]);
 
-  useEffect(() => {
-    fetch('/api/stats?period=last-month')
-      .then(res => res.json())
-      .then(setStats);
-  }, []);
+  // 去除 stats 请求 huangqing
+  // useEffect(() => {
+  //   fetch('/api/stats?period=last-month')
+  //     .then(res => res.json())
+  //     .then(setStats);
+  // }, []);
 
   return (
     <Fragment>

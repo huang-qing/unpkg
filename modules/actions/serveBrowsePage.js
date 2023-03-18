@@ -9,6 +9,7 @@ import { createElement, createHTML } from '../utils/markup.js';
 import { getVersionsAndTags } from '../utils/npm.js';
 
 const doctype = '<!DOCTYPE html>';
+//console.log('NODE_ENV',process.env.NODE_ENV);
 const globalURLs =
   process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging'
     ? {
