@@ -4,11 +4,9 @@
   "description": "The CDN for everything on npm",
   "scripts": {
     "build": "rollup -c",
-    "build:prod":"cross-env NODE_ENV=production rollup -c",
     "clean": "git clean -e '!/.env' -fdX .",
     "lint": "eslint .",
     "serve": "nodemon -w server.js server.js",
-    "serve:prod": "cross-env NODE_ENV=production nodemon -w server.js server.js",
     "test": "jest",
     "watch": "rollup -c -w",
     "postinstall": "yarn run build"

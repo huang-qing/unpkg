@@ -6,7 +6,7 @@ import getScripts from '../utils/getScripts.js';
 import { createElement, createHTML } from '../utils/markup.js';
 
 const doctype = '<!DOCTYPE html>';
-//console.log('NODE_ENV',process.env.NODE_ENV);
+console.log('MainPage:NODE_ENV',process.env.NODE_ENV);
 const globalURLs =
   process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging'
     ? {

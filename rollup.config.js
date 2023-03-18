@@ -12,6 +12,14 @@ const url = require('rollup-plugin-url');
 const entryManifest = require('./plugins/entryManifest');
 const pkg = require('./package.json');
 
+import dotenv from 'dotenv';
+
+dotenv.config('./env');
+//console.log(process.env);
+
+
+console.log('rollup:NODE_ENV',process.env.NODE_ENV);
+
 const buildId =
   process.env.BUILD_ID ||
   execSync('git rev-parse --short HEAD').toString().trim();

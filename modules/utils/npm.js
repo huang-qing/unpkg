@@ -5,8 +5,16 @@ import LRUCache from 'lru-cache';
 
 import bufferStream from './bufferStream.js';
 
+import dotenv from 'dotenv';
+
+dotenv.config('./env');
+console.log(process.env);
+
+
 const npmRegistryURL =
   process.env.NPM_REGISTRY_URL || 'https://registry.npmjs.org';
+
+console.log('npmRegistryURL:', npmRegistryURL);
 
 const agent = new https.Agent({
   keepAlive: true

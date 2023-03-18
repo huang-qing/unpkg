@@ -21,6 +21,10 @@ import validateFilename from './middleware/validateFilename.js';
 import validatePackagePathname from './middleware/validatePackagePathname.js';
 import validatePackageName from './middleware/validatePackageName.js';
 import validatePackageVersion from './middleware/validatePackageVersion.js';
+// import dotenv from 'dotenv';
+
+// dotenv.config('./env');
+// console.log(process.env);
 
 function createApp(callback) {
   const app = express();
