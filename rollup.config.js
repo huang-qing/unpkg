@@ -20,9 +20,12 @@ dotenv.config('./env');
 
 console.log('rollup:NODE_ENV',process.env.NODE_ENV);
 
-const buildId =
-  process.env.BUILD_ID ||
-  execSync('git rev-parse --short HEAD').toString().trim();
+// const buildId =
+//   process.env.BUILD_ID ||
+//   execSync('git rev-parse --short HEAD').toString().trim();
+
+const buildId =process.env.BUILD_ID;
+  
 
 const manifest = entryManifest();
 
