@@ -1,5 +1,6 @@
 import url from 'url';
-import https from 'https';
+import _https from 'https';
+import _http from 'http';
 import gunzip from 'gunzip-maybe';
 import LRUCache from 'lru-cache';
 
@@ -10,11 +11,14 @@ import dotenv from 'dotenv';
 dotenv.config('./env');
 console.log(process.env);
 
-
 const npmRegistryURL =
   process.env.NPM_REGISTRY_URL || 'https://registry.npmjs.org';
 
 console.log('npmRegistryURL:', npmRegistryURL);
+
+// 支持http
+const scheme = npmRegistryURL.startsWith('https://') ? 'https' : 'http';
+const https = scheme === 'https' ? _https : _http;
 
 const agent = new https.Agent({
   keepAlive: true
@@ -55,7 +59,7 @@ async function fetchPackageInfo(packageName, log) {
   log.debug('Fetching package info for %s from %s', packageName, infoURL);
 
   const { hostname, pathname } = url.parse(infoURL);
-  const options = {
+  const _options = {
     agent: agent,
     hostname: hostname,
     path: pathname,
@@ -63,6 +67,8 @@ async function fetchPackageInfo(packageName, log) {
       Accept: 'application/json'
     }
   };
+
+  const options = scheme === 'https' ? _options : infoURL;
 
   const res = await get(options);
 
@@ -182,11 +188,14 @@ export async function getPackage(packageName, version, log) {
   log.debug('Fetching package for %s from %s', packageName, tarballURL);
 
   const { hostname, pathname } = url.parse(tarballURL);
-  const options = {
+  const _options = {
     agent: agent,
     hostname: hostname,
     path: pathname
   };
+
+
+  const options = scheme === 'https' ? _options : tarballURL;
 
   const res = await get(options);
 

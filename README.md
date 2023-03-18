@@ -12,3 +12,9 @@ Please visit [the UNPKG website](https://unpkg.com) to learn more about how to u
 ### Sponsors
 
 Our sponsors and backers are listed [in SPONSORS.md](SPONSORS.md).
+
+
++ 支持http
++ 使用`.env` 文件配置 `NODE_ENV` `PORT` `NPM_REGISTRY_URL`
+
+
