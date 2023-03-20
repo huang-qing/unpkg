@@ -17,5 +17,33 @@ Our sponsors and backers are listed [in SPONSORS.md](SPONSORS.md).
 
 + 支持http
 + 使用`.env` 文件配置 `NODE_ENV` `PORT` `NPM_REGISTRY_URL`
++ 支持docker https://hub.docker.com/r/huangqing1/unpkg
 
+
+
+命令行：
+
+```PowerShell
+docker run 
+# 调整为需要的NPM库地址
+--env=NPM_REGISTRY_URL=http://10.0.64.86:8888  
+-p 8080:8080  
+-d huangqing1/unpkg:1.0.0
+```
+
+
+docker-compose.yml
+
+```yaml
+version: "3"
+
+services: 
+    unpkg:
+      image: huangqing1/unpkg:1.0.0
+      environment: 
+      # 使用变量配置需要调整的NPM库地址
+      - NPM_REGISTRY_URL=https://mirrors.cloud.tencent.com/npm
+      ports: 
+      - 8080:8080
+```
 
